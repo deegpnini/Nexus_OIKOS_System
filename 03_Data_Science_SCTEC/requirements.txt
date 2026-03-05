@@ -1,0 +1,130 @@
+pandas==2.2.3
+matplotlib==3.9.4
+seaborn==0.13.2# 🚢 DESAFIO TITANIC — Análise Exploratória de Dados
+
+**Aluno:** Helyton Renato Gonçalves Ronchi  
+**Curso:** Introdução ao Data Science (IP 20h A)  
+**Instituição:** SENAI/SC — LAB365  
+**Data:** Março/2026  
+
+---
+
+## 📌 OBJETIVO DO PROJETO
+
+Realizar uma análise exploratória do dataset público do Titanic, aplicando conceitos fundamentais de Data Science como:
+
+- Importação e compreensão de dados
+- Tratamento de valores ausentes
+- Criação de novas variáveis (feature engineering)
+- Análise estatística descritiva
+- Visualização de padrões e relações
+- Documentação profissional do processo
+
+---
+
+## 📊 TECNOLOGIAS UTILIZADAS
+
+| Tecnologia | Versão | Uso |
+|------------|--------|-----|
+| Python | 3.12 | Linguagem principal |
+| Pandas | 2.2.3 | Manipulação e análise de dados |
+| Matplotlib | 3.9.4 | Visualizações |
+| Seaborn | 0.13.2 | Visualizações estatísticas |
+
+---
+
+## 🧹 ETAPAS REALIZADAS
+
+### 1. Importação e Compreensão
+- Carregamento do dataset `titanic.csv`
+- Análise inicial com `.info()`, `.describe()` e `.head()`
+- Identificação da estrutura: 891 linhas × 12 colunas
+
+### 2. Tratamento de Dados
+| Variável | Problema | Solução | Justificativa |
+|----------|----------|---------|---------------|
+| Age | 177 nulos (19.9%) | Mediana por classe | Idades variavam entre classes |
+| Embarked | 2 nulos (0.2%) | Moda (Southampton) | Porto predominante |
+| Cabin | 687 nulos (77.1%) | Flag `Has_Cabin` | Número da cabine pouco informativo |
+| Tipos | `Survived` e `Pclass` como object | Conversão para int | Análise numérica correta |
+
+### 3. Feature Engineering
+- `Family_Size` = `SibSp` + `Parch` + 1
+- `Is_Alone` = 1 se `Family_Size == 1`, 0 caso contrário
+
+### 4. Análise Exploratória
+- Taxa geral de sobrevivência
+- Agrupamentos por classe, sexo, porto
+- Filtros para crianças (<12) e idosos (>60)
+- Comparação entre quem tinha/sem cabine
+- Análise de passageiros sozinhos vs acompanhados
+- Ordenação por idade dos sobreviventes
+
+### 5. Visualizações
+- **Gráfico 1:** Sobrevivência por classe e sexo (barras)
+- **Gráfico 2:** Distribuição de idade por sobrevivência (histograma)
+- **Gráfico 3:** Tarifa por classe e sobrevivência (boxplot)
+- **Gráfico 4:** Sobrevivência por porto (contagem)
+
+### 6. Documentação
+- Código comentado e organizado
+- README detalhado
+- Seção de limitações
+- Reflexão pessoal
+- Próximos passos sugeridos
+
+---
+
+## 🔎 PRINCIPAIS INSIGHTS
+
+| Variável | Categoria | Taxa de Sobrevivência |
+|----------|-----------|------------------------|
+| **Geral** | Todos | 38.4% |
+| **Classe** | 1ª Classe | 63.0% |
+| | 2ª Classe | 47.3% |
+| | 3ª Classe | 24.2% |
+| **Gênero** | Mulheres | 74.2% |
+| | Homens | 18.9% |
+| **Idade** | Crianças (<12) | 54.0% |
+| | Idosos (>60) | 22.7% |
+| **Cabine** | Com cabine | 66.7% |
+| | Sem cabine | 30.0% |
+| **Família** | Sozinho | 30.3% |
+| | Acompanhado | 50.5% |
+| **Porto** | Cherbourg (C) | 55.4% |
+| | Queenstown (Q) | 39.0% |
+| | Southampton (S) | 33.7% |
+
+---
+
+## 🧠 CONCLUSÃO
+
+Os resultados indicam forte correlação entre **classe social**, **gênero** e **sobrevivência**. Mulheres e passageiros da 1ª classe apresentaram maior taxa de sobrevivência, reforçando evidências históricas do protocolo "mulheres e crianças primeiro" e da **desigualdade estrutural** no acesso aos botes salva-vidas.
+
+A análise também revela que:
+- Crianças tiveram prioridade (54% vs 38% geral)
+- Passageiros com cabine (indicador de poder aquisitivo) tiveram mais que o dobro de chances
+- Estar acompanhado aumentou significativamente a probabilidade de sobrevivência
+
+---
+
+## ⚠️ LIMITAÇÕES DO ESTUDO
+
+- O dataset não possui informação detalhada sobre prioridade real de resgate (ordem de acesso aos botes, por exemplo)
+- A variável 'Cabin' possui aproximadamente 77% de valores ausentes, o que limitou sua análise a uma flag binária
+- A imputação de idade por mediana da classe, embora estatisticamente justificável, pode introduzir viés
+- A análise é exploratória e não estabelece relações de causalidade — apenas correlações observadas
+
+---
+
+## 🚀 PRÓXIMOS PASSOS FUTUROS
+
+- Aplicar modelo de Machine Learning (ex: Regressão Logística) para previsão de sobrevivência
+- Testar outras estratégias de imputação (regressão, KNN) e comparar resultados
+- Avaliar impacto de novas features (títulos, decks, etc.) na qualidade da análise
+- Explorar validação cruzada para garantir robustez dos resultados
+
+---
+
+## 📁 ESTRUTURA DO PROJETO
+
